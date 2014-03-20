@@ -10,6 +10,12 @@
 #include <sys/time.h>
 #include <sys/resource.h> /* Bibliothèques utilisées pour mesurer le temps CPU */
 
+#include <list>
+#include <iostream>
+#include "function.hpp"
+
+using namespace std;
+
 /* structures et fonctions de mesure du temps CPU */
 
 struct timeval start_utime, stop_utime;
@@ -17,7 +23,7 @@ struct timeval start_utime, stop_utime;
 void crono_start()
 {
 	struct rusage rusage;
-	
+
 	getrusage(RUSAGE_SELF, &rusage);
 	start_utime = rusage.ru_utime;
 }
@@ -25,7 +31,7 @@ void crono_start()
 void crono_stop()
 {
 	struct rusage rusage;
-	
+
 	getrusage(RUSAGE_SELF, &rusage);
 	stop_utime = rusage.ru_utime;
 }
@@ -51,34 +57,34 @@ void lecture_data(char *file, donnees *p)
 {
 	int i,j;
 	FILE *fin;
-	
+
 	int val;
 	fin = fopen(file,"rt");
-	
+
 	/* Lecture du nombre de villes */
-	
+
 	fscanf(fin,"%d",&val);
 	p->nblieux = val;
 
 	/* Allocation mémoire pour la demande de chaque ville, et le distancier */
-	
+
 	p->demande = (int *) malloc (val * sizeof(int));
 	p->C = (int **) malloc (val * sizeof(int *));
 	for(i = 0;i < val;i++) p->C[i] = (int *) malloc (val * sizeof(int));
-	
+
 	/* Lecture de la capacité */
-	
+
 	fscanf(fin,"%d",&val);
 	p->capacite = val;
-	
+
 	/* Lecture des demandes des clients */
-	
+
 	for(i = 1;i < p->nblieux;i++)
 	{
 		fscanf(fin,"%d",&val);
 		p->demande[i] = val;
 	}
-	
+
 	/* Lecture du distancier */
 
 	for(i = 0; i < p->nblieux; i++)
@@ -87,7 +93,7 @@ void lecture_data(char *file, donnees *p)
 			fscanf(fin,"%d",&val);
 			p->C[i][j] = val;
 		}
-		
+
 	fclose(fin);
 }
 
@@ -98,55 +104,45 @@ void free_data(donnees *p)
 	int i;
 	for(i = 0;i < p->nblieux;i++) free(p->C[i]);
 	free(p->C);
-	free(p->demande);	
+	free(p->demande);
 }
 
 
 int main(int argc, char *argv[])
-{	
+{
 	/* Déclarations des variables (à compléter) */
 
-	donnees p; 
+	donnees p;
 	double temps;
-		
+	list< list< int > > ec;
+
 	/* Chargement des données à partir d'un fichier */
-	
+
 	lecture_data(argv[1],&p);
-	
+
 	/* Lancement de la résolution... */
 
 	crono_start(); // .. et donc du chronomètre
 
-	/* .... */
 
-
-
-
-
-
-
-
-
-
-
-
-	/* ... */
-
-
+	ec = enumCli(p.demande, p.nblieux, p.capacite);
+	cout << "-----------------------------"<<endl;
+	print_dlist(ec);
 
 	/* Problème résolu, arrêt du chrono */
-	
+
 	crono_stop();
 	temps = crono_ms()/1000,0;
-	
+
 	/* Affichage des résultats (à compléter) */
-	
-	printf("Temps : %f\n",temps);	
-	
+
+	printf("Temps : %f\n",temps);
+
 	/* libération mémoire (à compléter en fonction des allocations) */
 
 	free_data(&p);
-	
+
 	/* J'adore qu'un plan se déroule sans accroc! */
 	return 0;
 }
+
