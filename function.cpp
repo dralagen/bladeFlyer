@@ -3,7 +3,7 @@
 
 using namespace std;
 
-list<list<int> > enumCli(int* demCli, int nbCli, int cap) {
+list<list<int>> enumCli(int* demCli, int nbCli, int cap) {
 	static list<list<int> > l;
 	list<int> listVide;
 	for (int i = 1; i < nbCli; ++i) {
@@ -24,6 +24,20 @@ void enumCli_aux(list<list<int> > &l, int* demCli, int nbCli, int totalCap, int 
 	}
 }
 
+/*list<list<int>> permutbourrin(int** mat, list<int> l) {
+	static list<list<int>> res;
+	list<int> listVide;
+	int fin = l.size();
+	for (int i = 1; i < fin; ++i) {
+		permutbourrin_aux(i, )
+	}
+	int fin2 = res.size();
+	for (list<int>::iterator it = res.begin(); it != res.end())
+	permut.push_front(0);
+	permut.push_back(0);
+	return res;
+}
+*/
 void print_list(const list<int> &l) {
  cout << "{ ";
  for (list<int>::const_iterator it = l.begin(); it != l.end(); ++it) {
@@ -44,4 +58,3 @@ void print_dlist(const std::list< std::list<int> > &l) {
 
  cout << "} " << endl << endl;
 }
-
