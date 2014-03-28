@@ -24,20 +24,26 @@ void enumCli_aux(list<list<int> > &l, int* demCli, int nbCli, int totalCap, int 
 	}
 }
 
-/*list<list<int>> permutbourrin(int** mat, list<int> l) {
-	static list<list<int>> res;
+list<list<int>> permutbourrin(int** mat, list<int> l) { // Cette méthode ci nous renvoi toutes les permutations
+	// Une amélioration pourrait ne pas renvoyer les "reflets", soit diviser par deux le nb de permutations
+	static list<list<int>> res; //La liste de toutes les permutations
 	list<int> listVide;
-	int fin = l.size();
+	int fin = l.size(); //Pour ne pas le calculer à chaque fois
 	for (int i = 1; i < fin; ++i) {
-		permutbourrin_aux(i, )
+		permutbourrin_aux(i, ) //Fct aux, c'est la que je galère
+		// Une permutation de ( x , ... ) c'est une permut de ( ... ) avec x devant etc.
+		// http://www.developpez.net/forums/d504828/autres-langages/algorithmes/mathematiques/algorithme-permutation/
+		// Réponse #5
 	}
-	int fin2 = res.size();
-	for (list<int>::iterator it = res.begin(); it != res.end())
-	permut.push_front(0);
-	permut.push_back(0);
+	
+	for (list<int>::iterator it = res.begin(); it != res.end()){
+		// Pour rajouter les 0 (l'entrepôt) de chaque côté des permutations
+		*it.push_front(0);
+		*it.push_back(0);
+	}
 	return res;
 }
-*/
+
 void print_list(const list<int> &l) {
  cout << "{ ";
  for (list<int>::const_iterator it = l.begin(); it != l.end(); ++it) {
