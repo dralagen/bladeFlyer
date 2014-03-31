@@ -26,7 +26,7 @@ void enumCli_aux(list<list<int> > &l, int* demCli, int nbCli, int totalCap, int 
 
 list<list<int>> permutdouble(list<list<int>> ec){
 	list<list<int>> res;
-	for (iterator it=ec.begin(); it =! ec.end(): it++){
+	for (iterator it = ec.begin(); it != ec.end(); it++){
 		permutbourrin(res, list<int> rien,*it)
 	}
 }
@@ -34,40 +34,13 @@ list<list<int>> permutdouble(list<list<int>> ec){
 void permutbourrin(list<list<int>> res, list<int> new, list<int> old){
 	if old.size() == 0;
 		res.push_back(new);
-	else for (iterator it = old.begin(); it != old.end(); it++)
+	else for (iterator it = old.begin(); it != old.end(); it++){
 		new.push_back(*it);
-		list<int> tmp.assign(old.begin(), old.end())
+		list<int> tmp.assign(old.begin(), old.end());
 		tmp.erase(it);
-		permutbourrin(res, new, tmp)
+		permutbourrin(res, new, tmp);
+	}
 }
-
-/*list<list<int>> permutbourrin(int** mat, list<int> l) { // Cette méthode ci nous renvoi toutes les permutations
-	// Une amélioration pourrait ne pas renvoyer les "reflets", soit diviser par deux le nb de permutations
-	// Variables
-	static list<list<int>> res; //La liste de toutes les permutations
-	int fin = l.size(); //Pour ne pas le calculer à chaque fois
-	int pos = 0; //La position
-	
-	//Prog
-	if (pos == 0){
-		res.push_back(l); //On ajoute la liste de départ qui est une permutation
-		pos ++; //On incrémente la positino
-	}
-	while (pos<fin){
-		if(l[pos]<pos){
-			int index = (pos%2)==0 ? 0 : l[pos]
-			swap(pos, index, l)
-			
-		}
-	}
-	
-	for (list<int>::iterator it = res.begin(); it != res.end()){
-		// Pour rajouter les 0 (l'entrepôt) de chaque côté des permutations
-		*it.push_front(0);
-		*it.push_back(0);
-	}
-	return res;
-}*/
 
 void print_list(const list<int> &l) {
  cout << "{ ";
