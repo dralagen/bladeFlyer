@@ -135,6 +135,13 @@ int main(int argc, char *argv[])
 	cout << "-----------------------------"<<endl;
 	print_dlist(res);
 	
+	/* Test de long */
+	list<int> l;
+	for (i = 1; i < 5; i++){
+		l.push_back(i);
+	}
+	long(l);
+	
 	/* Problème résolu, arrêt du chrono */
 
 	crono_stop();
