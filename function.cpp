@@ -26,7 +26,7 @@ void enumCli_aux(list<list<int> > &l, int* demCli, int nbCli, int totalCap, int 
 
 list<list<int>> permutdouble(list<list<int>> ec){
 	list<list<int>> res;
-	for (list<int>::iterator it = ec.begin(); it != ec.end(); it++){
+	for (list<list<int>>::iterator it = ec.begin(); it != ec.end(); it++){
 		list<int> rien;
 		permutbourrin(res, rien, *it);
 	}
