@@ -36,12 +36,14 @@ list<list<int>> permutdouble(list<list<int>> ec){
 void permutbourrin(list<list<int>> res, list<int> nouv, list<int> old){
 	if (old.size() == 0)
 		res.push_back(nouv);
-	else for (list<int>::iterator it = old.begin(); it != old.end(); it++){
-		nouv.push_back(*it);
-		list<int> tmp;
-		tmp.assign(old.begin(), old.end());
-		tmp.erase(it);
-		permutbourrin(res, nouv, tmp);
+	else{
+		for (list<int>::iterator it = old.begin(); it != old.end(); it++){
+			nouv.push_back(*it);
+			list<int> tmp;
+			tmp.assign(old.begin(), old.end());
+			tmp.erase(it);
+			permutbourrin(res, nouv, tmp);
+		}
 	}
 }
 
