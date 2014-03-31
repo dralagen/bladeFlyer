@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
 
 	donnees p;
 	double temps;
-	list< list< int > > ec;
+	list<list<int>> ec;
 
 	/* Chargement des données à partir d'un fichier */
 
@@ -124,10 +124,13 @@ int main(int argc, char *argv[])
 
 	crono_start(); // .. et donc du chronomètre
 
-
+	/* Enumération ! */
 	ec = enumCli(p.demande, p.nblieux, p.capacite);
 	cout << "-----------------------------"<<endl;
 	print_dlist(ec);
+	
+	/* Permutations ! */
+	permutdouble(ec);
 
 	/* Problème résolu, arrêt du chrono */
 
