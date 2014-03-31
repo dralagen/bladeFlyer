@@ -42,12 +42,11 @@ void permutbourrin(list<list<int>> res, list<int> nouv, list<int> old){
 		list<int>::iterator it = old.begin();
 		while ( it != old.end() ){
 			nouv.push_back(*it);
-			int i;
-			cout << old.size() << ' ';
-			it = old.erase(it);
-			cout << old.size() << endl;
-			permutbourrin(res, nouv, old);
-			old.insert(it, i);
+			list<int> tmp;
+			tmp.assign(old.begin(), it);
+			tmp.assign(it+1, old.end());
+			cout << old.size() << ' ' << tmp.size() << endl;
+			permutbourrin(res, nouv, tmp);
 		}
 	}
 }
