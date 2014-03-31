@@ -53,7 +53,6 @@ void permutbourrin(list<list<int>> &res, list<int> nouv, list<int> old){
 }
 
 int CalLong(list<int> &l, int** mat){
-	int res;
 	list<int>::iterator it = l.begin();
 	int res = mat[0][*it];
 	for (it = ++it; it != l.end(); ++it){
