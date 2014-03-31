@@ -56,9 +56,9 @@ int CalLong(list<int> &l, int** mat){
 	list<int>::iterator it = l.begin();
 	int res = mat[0][*it];
 	for (it = ++it; it != l.end(); ++it){
-		res += mat[--it][++it];
+		res += mat[*--it][*++it];
 	}
-	res += mat[--it][0];
+	res += mat[*--it][0];
 	return res;
 }
 
