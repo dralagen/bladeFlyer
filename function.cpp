@@ -52,8 +52,15 @@ void permutbourrin(list<list<int>> &res, list<int> nouv, list<int> old){
 	}
 }
 
-int long(list<int> l, int* demCli){
-	
+int long(const std::list<int> &l, int** mat){
+	int res;
+	list<int>::const_iterator it = l.begin();
+	int res = mat[0][*it];
+	for (it = ++it; it != l.end(); ++it){
+		res += mat[--it][++it];
+	}
+	res += mat[--it][0];
+	return res;
 }
 
 void print_list(const list<int> &l) {
