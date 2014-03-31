@@ -131,7 +131,7 @@ int main(int argc, char *argv[])
 	print_dlist(ec);
 	
 	/* Permutations ! */
-	res = permutdouble(ec);
+	res = permutdouble(&ec);
 	cout << "-----------------------------"<<endl;
 	print_dlist(res);
 	
