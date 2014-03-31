@@ -115,6 +115,7 @@ int main(int argc, char *argv[])
 	donnees p;
 	double temps;
 	list<list<int>> ec;
+	list<list<int>> res;
 
 	/* Chargement des données à partir d'un fichier */
 
@@ -130,8 +131,10 @@ int main(int argc, char *argv[])
 	print_dlist(ec);
 	
 	/* Permutations ! */
-	permutdouble(ec);
-
+	res = permutdouble(ec);
+	cout << "-----------------------------"<<endl;
+	print_dlist(res);
+	
 	/* Problème résolu, arrêt du chrono */
 
 	crono_stop();
