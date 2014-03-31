@@ -27,19 +27,20 @@ void enumCli_aux(list<list<int> > &l, int* demCli, int nbCli, int totalCap, int 
 list<list<int>> permutdouble(list<list<int>> ec){
 	list<list<int>> res;
 	for (iterator it = ec.begin(); it != ec.end(); it++){
-		permutbourrin(res, list<int> rien,*it)
+		list<int> rien;
+		permutbourrin(res, rien, *it);
 	}
 }
 
-void permutbourrin(list<list<int>> res, list<int> new, list<int> old){
+void permutbourrin(list<list<int>> res, list<int> nouv, list<int> old){
 	if old.size() == 0;
-		res.push_back(new);
+		res.push_back(nouv);
 	else for (iterator it = old.begin(); it != old.end(); it++){
-		new.push_back(*it);
+		nouv.push_back(*it);
 		list<int> tmp;
 		tmp.assign(old.begin(), old.end());
 		tmp.erase(it);
-		permutbourrin(res, new, tmp);
+		permutbourrin(res, nouv, tmp);
 	}
 }
 
