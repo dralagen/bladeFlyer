@@ -140,7 +140,7 @@ int main(int argc, char *argv[])
 	for (i = 1; i < 5; i++){
 		l.push_back(i);
 	}
-	cout << long(l);
+	cout << long(l) << endl;
 	
 	/* Problème résolu, arrêt du chrono */
 
