@@ -40,12 +40,12 @@ void permutbourrin(list<list<int>> res, list<int> nouv, list<int> old){
 	}
 	else{
 		for (list<int>::iterator it = old.begin(); it != old.end() ; it){
-			nouv.push_back(*it);
-			list<int> tmp;
-			tmp.assign(old.begin(), it);
-			tmp.assign(++it, old.end());
-			cout << old.size() << ' ' << tmp.size() << endl;
-			permutbourrin(res, nouv, tmp);
+			list<int> tmp1 (nouv)
+			tmp1.push_back(*it);
+			list<int> tmp2;
+			tmp2.assign(old.begin(), it);
+			tmp2.assign(++it, old.end());
+			permutbourrin(res, tmp1, tmp2);
 		}
 	}
 }
