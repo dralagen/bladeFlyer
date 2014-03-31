@@ -7,7 +7,7 @@ void enumCli_aux(std::list<std::list<int> > &l, int* demCli, int nbCli, int tota
 std::list<std::list<int>> permutdouble(std::list<std::list<int>> ec);
 void permutbourrin(std::list<std::list<int>> &res, std::list<int> nouv, std::list<int> old);
 
-int long(std::list<int> l, int** mat);
+int long(std::list<int> &l, int** mat);
 
 void print_list(const std::list<int> &l);
 void print_dlist(const std::list< std::list<int> > &l);
