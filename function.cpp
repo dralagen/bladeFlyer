@@ -40,7 +40,7 @@ void permutbourrin(list<list<int>> res, list<int> nouv, list<int> old){
 	}
 	else{
 		for (list<int>::iterator it = old.begin(); it != old.end() ; it){
-			list<int> tmp1 (nouv)
+			list<int> tmp1 (nouv);
 			tmp1.push_back(*it);
 			list<int> tmp2;
 			tmp2.assign(old.begin(), it);
