@@ -43,9 +43,9 @@ void permutbourrin(list<list<int>> res, list<int> nouv, list<int> old){
 			nouv.push_back(*it);
 			list<int> tmp;
 			tmp.assign(old.begin(), old.end());
-			printf(tmp.size());
+			cout << tmp.size() << ' ';
 			tmp.erase(it);
-			printf(tmp.size());
+			cout << tmp.size() << endl;
 			permutbourrin(res, nouv, tmp);
 		}
 	}
