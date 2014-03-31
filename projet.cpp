@@ -137,7 +137,7 @@ int main(int argc, char *argv[])
 	
 	/* Test de long */
 	list<int> l;
-	for (i = 1; i < 5; i++){
+	for (int i = 1; i < 5; i++){
 		l.push_back(i);
 	}
 	cout << CalLong(l, p.C) << endl;
