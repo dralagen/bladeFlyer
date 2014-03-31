@@ -39,13 +39,15 @@ void permutbourrin(list<list<int>> res, list<int> nouv, list<int> old){
 		res.push_back(nouv);
 	}
 	else{
-		for (list<int>::iterator it = old.begin(); it != old.end(); it++){
+		list<int>::iterator it = old.begin();
+		while ( it != old.end() ){
 			nouv.push_back(*it);
-			list<int> tmp (old);
-			cout << tmp.size() << ' ';
-			it = tmp.erase(it);
-			cout << tmp.size() << endl;
-			permutbourrin(res, nouv, tmp);
+			int i;
+			cout << old.size() << ' ';
+			it = old.erase(it);
+			cout << old.size() << endl;
+			permutbourrin(res, nouv, old);
+			old.insert(it, i);
 		}
 	}
 }
