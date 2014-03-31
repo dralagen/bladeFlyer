@@ -33,7 +33,7 @@ list<list<int>> permutdouble(list<list<int>> ec){
 }
 
 void permutbourrin(list<list<int>> res, list<int> nouv, list<int> old){
-	if old.size() == 0;
+	if (old.size() == 0)
 		res.push_back(nouv);
 	else for (iterator it = old.begin(); it != old.end(); it++){
 		nouv.push_back(*it);
