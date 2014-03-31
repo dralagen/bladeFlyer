@@ -52,6 +52,10 @@ void permutbourrin(list<list<int>> &res, list<int> nouv, list<int> old){
 	}
 }
 
+int long(list<int> l, int* demCli){
+	
+}
+
 void print_list(const list<int> &l) {
  cout << "{ ";
  for (list<int>::const_iterator it = l.begin(); it != l.end(); ++it) {
