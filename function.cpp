@@ -52,9 +52,9 @@ void permutbourrin(list<list<int>> &res, list<int> nouv, list<int> old){
 	}
 }
 
-int long(const std::list<int> &l, int** mat){
+int long(std::list<int> &l, int** mat){
 	int res;
-	list<int>::const_iterator it = l.begin();
+	list<int>::iterator it = l.begin();
 	int res = mat[0][*it];
 	for (it = ++it; it != l.end(); ++it){
 		res += mat[--it][++it];
