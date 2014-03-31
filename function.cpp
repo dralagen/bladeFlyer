@@ -39,8 +39,7 @@ void permutbourrin(list<list<int>> res, list<int> nouv, list<int> old){
 		res.push_back(nouv);
 	}
 	else{
-		list<int>::iterator it = old.begin();
-		while ( it != old.end() ){
+		for (list<int>::iterator it = old.begin(); it != old.end() ; it){
 			nouv.push_back(*it);
 			list<int> tmp;
 			tmp.assign(old.begin(), it);
