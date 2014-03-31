@@ -43,8 +43,10 @@ void permutbourrin(list<list<int>> &res, list<int> nouv, list<int> old){
 			list<int> tmp1 (nouv);
 			tmp1.push_back(*it);
 			list<int> tmp2;
+			list<int> tmp3;
 			tmp2.assign(old.begin(), it);
-			tmp2.insert(it, ++it, old.end());
+			tmp3.assign(++it, old.end());
+			tmp2.splice(tmp2.end(), tmp3);
 			permutbourrin(res, tmp1, tmp2);
 		}
 	}
