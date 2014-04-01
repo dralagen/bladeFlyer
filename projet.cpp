@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
 	donnees p;
 	double temps;
 	list<list<int>> ec;
-	list<list<int>> res;
+	regroupement res;
 
 	/* Chargement des données à partir d'un fichier */
 
@@ -131,9 +131,10 @@ int main(int argc, char *argv[])
 	print_dlist(ec);
 	
 	/* Permutations ! */
-	res = permutdouble(ec);
+	res = permutdouble(ec, p.C);
 	cout << "-----------------------------"<<endl;
-	print_dlist(res);
+	print_list(res.perm);
+	cout << 'Sa longueur est de ' << res.lon << endl;
 	
 	/* Test de long */
 	list<int> l;
