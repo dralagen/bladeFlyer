@@ -1,5 +1,10 @@
 #include <list>
 
+typedef struct{
+  std::list<int> perm;
+  int lon;
+}regroupement;
+
 std::list<std::list<int> > enumCli(int* demCli, int nbCli, int cap);
 
 void enumCli_aux(std::list<std::list<int> > &l, int* demCli, int nbCli, int totalCap, int cli, int cap, std::list<int> lastList);
