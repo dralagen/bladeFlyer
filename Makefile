@@ -1,7 +1,7 @@
 CC=g++
 EXEC=analyse
-CFLAGS=-W --std=c++11
-LDFLAGS=
+CFLAGS=-O2 -s -lglpk --std=c++11
+LDFLAGS=-lglpk
 
 SRC=$(wildcard *.cpp)
 OBJ=$(SRC:.cpp=.o)

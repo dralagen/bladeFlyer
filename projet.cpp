@@ -42,15 +42,6 @@ double crono_ms()
     (stop_utime.tv_usec - start_utime.tv_usec) / 1000 ;
 }
 
-/* Structure contenant les données du problème */
-
-typedef struct {
-	int nblieux; /* Nombre de lieux (incluant le dépôt) */
-	int capacite; /* Capacité du véhicule de livraison */
-	int *demande; /* Demande de chaque lieu (la case 0 est inutilisée car le dépôt n'a aucune demande à voir satisfaire) */
-	int **C; /* distancier (les lignes et colonnes 0 correspondent au dépôt) */
-} donnees;
-
 /* lecture des donnees */
 
 void lecture_data(char *file, donnees *p)
@@ -122,35 +113,33 @@ int main(int argc, char *argv[])
 	lecture_data(argv[1],&p);
 
 	/* Lancement de la résolution... */
-
 	crono_start(); // .. et donc du chronomètre
-
+	cout << "Enumération des regroupements de clients..." <<endl;
 	/* Enumération ! */
 	ec = enumCli(p.demande, p.nblieux, p.capacite);
-	cout << "-----------------------------"<<endl;
 	print_dlist(ec);
+	cout << "-----------------------------"<<endl;
 
 	/* Permutations ! */
+	cout << "Calcule des distances la plus courte des regroupements..." <<endl;
 	res = permutdouble(ec, (const int**) p.C);
+	print_list(res);
 	cout << "-----------------------------"<<endl;
-	for (std::list<regroupement>::iterator it=res.begin(); it != res.end(); ++it) {
-		print_list(it->perm);
-		cout << " : " << it->lon << endl;
-	}
+
 
 	/* problème de minimisation (glpk) */
+	cout << "Résoltion du Problème..."<<endl;
+	resolution(res, p);
+
 
 	/* Problème résolu, arrêt du chrono */
-
 	crono_stop();
 	temps = crono_ms()/1000,0;
 
 	/* Affichage des résultats (à compléter) */
-
 	printf("Temps : %f\n",temps);
 
 	/* libération mémoire (à compléter en fonction des allocations) */
-
 	free_data(&p);
 
 	/* J'adore qu'un plan se déroule sans accroc! */
