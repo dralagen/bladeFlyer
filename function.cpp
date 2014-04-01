@@ -7,8 +7,20 @@ using namespace std;
 list<list<int>> enumCli(int* demCli, int nbCli, int cap) {
 	static list<list<int> > l;
 	list<int> listVide;
+	int max = 0;
 	for (int i = 1; i < nbCli; ++i) {
-		enumCli_aux(l, demCli, nbCli, cap, i, 0, listVide);
+		max += demCli[i];
+	}
+	if (max <= cap){
+		for (int i = 1; i < nbCli; ++i){
+			listVide.push_back(i);
+		}
+		l.push_back(listVide); //Elle n'est plus vide ! =)
+	}
+	else{
+		for (int i = 1; i < nbCli; ++i) {
+			enumCli_aux(l, demCli, nbCli, cap, i, 0, listVide);
+		}
 	}
 	return l;
 }
