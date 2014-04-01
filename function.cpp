@@ -24,18 +24,26 @@ void enumCli_aux(list<list<int> > &l, int* demCli, int nbCli, int totalCap, int 
 	}
 }
 
-list<list<int>> permutdouble(list<list<int>> ec){
-	static list<list<int>> res;
+list<regroupement> permutdouble(list<list<int>> ec, const int** mat){
+	static list<regroupement> res;
 	for (list<list<int>>::iterator it = ec.begin(); it != ec.end(); it++){
+		regroupement tmp;
+		tmp.perm = *it;
+		tmp.lon = CalLong(*it, mat);
 		list<int> rien;
-		permutbourrin(res, rien, *it);
+		permutbourrin(tmp, rien, *it, mat);
+		res.push_back(tmp);
 	}
 	return res;
 }
 
-void permutbourrin(list<list<int>> &res, list<int> nouv, list<int> old){
+void permutbourrin(regroupement &res, list<int> nouv, list<int> old, const int** mat){
 	if (old.size() == 0){
-		res.push_back(nouv);
+		int tmp = CalLong(nouv, mat);
+		if (tmp < res.lon) {
+			res.lon = tmp;
+			res.perm = nouv;
+		}
 	}
 	else{
 		list<int>::iterator it = old.begin();
@@ -47,7 +55,7 @@ void permutbourrin(list<list<int>> &res, list<int> nouv, list<int> old){
 			tmp2.assign(old.begin(), it);
 			tmp3.assign(++it, old.end());
 			tmp2.splice(tmp2.end(), tmp3);
-			permutbourrin(res, tmp1, tmp2);
+			permutbourrin(res, tmp1, tmp2, mat);
 		}
 	}
 }

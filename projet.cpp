@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
 	donnees p;
 	double temps;
 	list<list<int>> ec;
-	list<list<int>> res;
+	list<regroupement> res;
 
 	/* Chargement des données à partir d'un fichier */
 
@@ -131,16 +131,14 @@ int main(int argc, char *argv[])
 	print_dlist(ec);
 
 	/* Permutations ! */
-	res = permutdouble(ec);
+	res = permutdouble(ec, (const int**) p.C);
 	cout << "-----------------------------"<<endl;
-	print_dlist(res);
-
-	/* Test de long */
-	list<int> l;
-	for (int i = 1; i < 5; i++){
-		l.push_back(i);
+	for (std::list<regroupement>::iterator it=res.begin(); it != res.end(); ++it) {
+		print_list(it->perm);
+		cout << " : " << it->lon << endl;
 	}
-	cout << CalLong(l, (const int**) p.C) << endl;
+
+	/* problème de minimisation (glpk) */
 
 	/* Problème résolu, arrêt du chrono */
 
