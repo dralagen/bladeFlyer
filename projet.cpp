@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
 	donnees p;
 	double temps;
 	list<list<int>> ec;
-	regroupement res;
+	list<regroupement> res;
 
 	/* Chargement des données à partir d'un fichier */
 
@@ -129,20 +129,22 @@ int main(int argc, char *argv[])
 	ec = enumCli(p.demande, p.nblieux, p.capacite);
 	cout << "-----------------------------"<<endl;
 	print_dlist(ec);
-	
+
 	/* Permutations ! */
 	res = permutdouble(ec, p.C);
 	cout << "-----------------------------"<<endl;
-	print_list(res.perm);
-	cout << 'Sa longueur est de ' << res.lon << endl;
-	
+	for (std::list<regroupement>::iterator it=res.begin(); it != res.end(); ++it) {
+		print_list(it->perm);
+		cout << "Sa longueur est de " << it->lon << endl;
+	}
+
 	/* Test de long */
 	list<int> l;
 	for (int i = 1; i < 5; i++){
 		l.push_back(i);
 	}
 	cout << CalLong(l, p.C) << endl;
-	
+
 	/* Problème résolu, arrêt du chrono */
 
 	crono_stop();

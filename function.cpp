@@ -25,7 +25,7 @@ void enumCli_aux(list<list<int> > &l, int* demCli, int nbCli, int totalCap, int 
 }
 
 list<regroupement> permutdouble(list<list<int>> ec, int** mat){
-	list<regroupement> res;
+	static list<regroupement> res;
 	for (list<list<int>>::iterator it = ec.begin(); it != ec.end(); it++){
 		regroupement tmp;
 		tmp.perm = *it;
@@ -40,7 +40,7 @@ list<regroupement> permutdouble(list<list<int>> ec, int** mat){
 void permutbourrin(regroupement &res, list<int> nouv, list<int> old, int** mat){
 	if (old.size() == 0){
 		int tmp = CalLong(nouv, mat);
-		if tmp < res.lon{
+		if (tmp < res.lon) {
 			res.lon = tmp;
 			res.perm = nouv;
 		}
@@ -90,3 +90,4 @@ void print_dlist(const std::list< std::list<int> > &l) {
 
  cout << "} " << endl << endl;
 }
+
