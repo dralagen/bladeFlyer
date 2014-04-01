@@ -129,19 +129,19 @@ int main(int argc, char *argv[])
 	ec = enumCli(p.demande, p.nblieux, p.capacite);
 	cout << "-----------------------------"<<endl;
 	print_dlist(ec);
-	
+
 	/* Permutations ! */
 	res = permutdouble(ec);
 	cout << "-----------------------------"<<endl;
 	print_dlist(res);
-	
+
 	/* Test de long */
 	list<int> l;
 	for (int i = 1; i < 5; i++){
 		l.push_back(i);
 	}
-	cout << CalLong(l, p.C) << endl;
-	
+	cout << CalLong(l, (const int**) p.C) << endl;
+
 	/* Problème résolu, arrêt du chrono */
 
 	crono_stop();

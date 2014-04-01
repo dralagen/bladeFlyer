@@ -52,8 +52,8 @@ void permutbourrin(list<list<int>> &res, list<int> nouv, list<int> old){
 	}
 }
 
-int CalLong(list<int> &l, int** mat){
-	list<int>::iterator it = l.begin();
+int CalLong(const list<int> &l, const int** mat){
+	list<int>::const_iterator it = l.begin();
 	int res = mat[0][*it];
 	for (it = ++it; it != l.end(); ++it){
 		res += mat[*--it][*++it];
@@ -82,3 +82,4 @@ void print_dlist(const std::list< std::list<int> > &l) {
 
  cout << "} " << endl << endl;
 }
+
