@@ -72,7 +72,6 @@ int CalLong(const list<int> &l, const int** mat){
 }
 
 void resolution(const list<regroupement> &reg, const donnees &d) {
-	static list<regroupement> res;
 	glp_prob *prob;
 	double z;
 
@@ -130,7 +129,6 @@ void resolution(const list<regroupement> &reg, const donnees &d) {
 	list<regroupement>::const_iterator it = reg.begin();
 	for (int i = 0; i < reg.size(); ++i) {
 		if (glp_mip_col_val(prob,i+1)) {
-			res.push_back(*it);
 			cout << "x"<<i+1<<"=1 : ";
 			print_list(it->perm);
 			cout << endl;
