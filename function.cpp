@@ -82,8 +82,7 @@ void resolution(const list<regroupement> &reg, const donnees &d) {
 	ja = new int[reg.size()*d.nblieux];
 	ar = new double[reg.size()*d.nblieux];
 
-	fclose(stdout);
-
+	cout << "/*" << endl;
 	prob = glp_create_prob();
 	glp_set_prob_name(prob, "Choix des regroupement");
 	glp_set_obj_dir(prob, GLP_MIN);
@@ -124,10 +123,9 @@ void resolution(const list<regroupement> &reg, const donnees &d) {
 
 	glp_simplex(prob,NULL); glp_intopt(prob,NULL); // resolution
 
+	cout << "*/" <<endl<<endl;
+
 	z = glp_mip_obj_val(prob);
-
-
-	freopen("/dev/tty", "w", stdout);
 
 	list<regroupement>::const_iterator it = reg.begin();
 	for (int i = 0; i < reg.size(); ++i) {
