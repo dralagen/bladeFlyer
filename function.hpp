@@ -9,8 +9,8 @@ std::list<std::list<int> > enumCli(int* demCli, int nbCli, int cap);
 
 void enumCli_aux(std::list<std::list<int> > &l, int* demCli, int nbCli, int totalCap, int cli, int cap, std::list<int> lastList);
 
-std::list<std::list<int>> permutdouble(std::list<std::list<int>> ec);
-void permutbourrin(std::list<std::list<int>> &res, std::list<int> nouv, std::list<int> old);
+regroupement permutdouble(std::list<std::list<int>> ec);
+void permutbourrin(regroupement &res, std::list<int> nouv, std::list<int> old);
 
 int CalLong(std::list<int> &l, int** mat);
 
